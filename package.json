@@ -4,7 +4,7 @@
   "version": "0.0.3",
   "repository": {
     "type": "git",
-    "url": "git://github.com/yuletide/node-shp"
+    "url": "git://github.com/Baki92/node-shp"
   },
   "main": "index.js",
   "engines": {
@@ -30,6 +30,10 @@
   "author": {
     "name": "Balazs Fodor"
   },
+  "bugs": {
+    "url": "https://github.com/Baki92/node-shp/issues"
+  },
+  "homepage": "https://github.com/Baki92/node-shp/#readme",
   "scripts": {
     "test": "mocha"
   }

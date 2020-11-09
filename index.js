@@ -45,11 +45,14 @@ function getFeatures(url, callback) {
     };
 //    console.log(record);
     feature.properties = attrs.values;
-
     switch(record.shapeType) {
       case Shp.ShpType.SHAPE_POINT:
         feature.geometry.type = Shp.GeoJsonType[record.shapeType];
         feature.geometry.coordinates = [record.shape.x, record.shape.y];
+        break;
+      case Shp.ShpType.SHAPE_POINTZ:
+        feature.geometry.type = Shp.GeoJsonType[record.shapeType];
+        feature.geometry.coordinates = [record.shape.x, record.shape.y,record.shape.z];
         break;
       case Shp.ShpType.SHAPE_POLYLINE:
         feature.geometry.type = Shp.GeoJsonType[record.shapeType];
@@ -59,6 +62,14 @@ function getFeatures(url, callback) {
           feature.geometry.coordinates.push([record.shape.rings[0][j].x, record.shape.rings[0][j].y]);
         }
         break;
+        case Shp.ShpType.SHAPE_POLYLINEZ:
+          feature.geometry.type = Shp.GeoJsonType[record.shapeType];
+          feature.geometry.coordinates = [];
+          var pointsLen = record.shape.rings[0].length;
+          for (var j = 0; j < pointsLen; j++) {
+            feature.geometry.coordinates.push([record.shape.rings[0][j].x, record.shape.rings[0][j].y, record.shape.rings[0][j].z]);
+          }
+          break;
       case Shp.ShpType.SHAPE_POLYGON:
         feature.geometry.type = Shp.GeoJsonType[record.shapeType];
         feature.geometry.coordinates = [];
@@ -73,6 +84,20 @@ function getFeatures(url, callback) {
           }
         }
         break;
+        case Shp.ShpType.SHAPE_POLYGONZ:
+          feature.geometry.type = Shp.GeoJsonType[record.shapeType];
+          feature.geometry.coordinates = [];
+          var ringsLen = record.shape.rings.length;
+          for (var j = 0; j < ringsLen; j++) {
+            var ring = record.shape.rings[j];
+            if (ring.length < 1) continue;
+            var featureRing = feature.geometry.coordinates[j] = [];
+            var ringLen = ring.length;
+            for (var k = 0; k < ringLen; k++) {
+              featureRing.push([ring[k].x, ring[k].y, ring[k].z]);
+            }
+          }
+          break;
       default:
         throw(new Error("Error converting SHP to geojson: Unsupported feature type"))
     }

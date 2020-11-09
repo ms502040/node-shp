@@ -1,7 +1,7 @@
 {
   "name" : "shp",
   "description" : "Convert shapefiles into geoJson without ogr2ogr/GDAL",
-  "version" : "0.0.2",
+  "version" : "0.0.3",
   "repository" : {
     "type" : "git",
     "url" : "git://github.com/yuletide/node-shp"
@@ -21,11 +21,8 @@
     "sinon": "~1.4.2"
   },
   "author": {
-    "name" : "Alex Yule",
-    "email" : "alexy@codeforamerica.org",
-    "url" : "http://alexyule.com"
+    "name" : "Balazs Fodor"
   },
-  "contributors": ["Christopher Fredén"],
   "scripts" : {
     "test" : "mocha"
   }

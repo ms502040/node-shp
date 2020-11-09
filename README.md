@@ -3,10 +3,6 @@ balazs-node-shp
 
 Node.js shapefile parser in pure JS
 
-Thanks to:
-[vanrijkom](http://code.google.com/p/vanrijkom-flashlibs/)
-via [RandomEtc](https://github.com/RandomEtc/shapefile-js)
-
 
 ##What about shp2json?
 

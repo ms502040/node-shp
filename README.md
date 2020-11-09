@@ -1,4 +1,4 @@
-node-shp
+balazs-node-shp
 ========
 
 Node.js shapefile parser in pure JS

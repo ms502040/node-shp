@@ -14,9 +14,9 @@ Usage
 ===================
 still in testing stages
 
-	> npm install shp
+	> npm install balazs-shp
 
-   	var Shp = require('shp');
+   	var Shp = require('balazs-shp');
    	var shpJson = Shp.readFileSync('path/to/shpfile_base_name');
    	// or
    	Shp.readFile('path', function(error, data){
